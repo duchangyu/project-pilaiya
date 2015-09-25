@@ -21,7 +21,7 @@ var passport = require('passport');
 var expressValidator = require('express-validator');
 var assets = require('connect-assets');
 
-var booksRouter = require('./routes/books');
+var restRouters = require('./routes/restRouters');
 var authApiRouter = require('./routes/authApi');
 var authRouter = require('./routes/auth');
 
@@ -82,11 +82,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(lusca({
-  csrf: true,
-  xframe: 'SAMEORIGIN',
-  xssProtection: true
-}));
+// app.use(lusca({
+//   csrf: true,
+//   xframe: 'SAMEORIGIN',
+//   xssProtection: true
+// }));
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
@@ -98,7 +98,7 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
 //custom router
-app.use('/books', booksRouter);
+app.use('/rest', restRouters);
 app.use('/api', authApiRouter);
 app.use('/auth', authRouter);
 
