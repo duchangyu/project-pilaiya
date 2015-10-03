@@ -48,3 +48,38 @@ describe('GET /random-url', function() {
       .expect(404, done);
   });
 });
+
+
+describe('Sensors REST API', function () {
+
+  describe('GET /REST/sensors', function () {
+
+    it('should return 200 OK', function (done) {
+      request(app).get('/rest/sensors').expect(200, done);
+
+
+    });
+    
+  });
+
+  describe('GET /REST/sensors/:senserId', function () {
+
+    it('should return 200 OK', function (done) {
+      request(app).get('/REST/sensors/560e8df074ec51e6489ec5dd').expect(200, done);
+
+
+    });
+    
+  });
+
+  describe('POST /REST/sensors  - create a sensor', function () {
+
+    it('should return 200 OK', function (done) {
+      request(app).post('/REST/sensors').expect(200, done);
+
+
+    });
+    
+  });
+  
+});

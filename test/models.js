@@ -40,3 +40,30 @@ describe('User Model', function() {
     });
   });
 });
+
+
+///////////////////////////
+
+var Sensor = require('../models/Sensor');
+
+describe('Sensor model', function () {
+
+  it('should create a new sensor', function (done) {
+
+    var tempSensor = new Sensor({
+      name : 'temperature sensor',
+      desciption: 'this is a temperature sensor for test',
+      
+    });
+
+    tempSensor.save(function(err){
+      if (err) return done(err);
+      done();
+
+    });
+
+
+    
+  });
+  
+});

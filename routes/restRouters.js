@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 var bookController = require('../controllers/book');
+var sensorController = require('../controllers/sensor');
 
 // middleware specific to this router
 router.use(function timeLog(req, res, next) {
@@ -28,6 +29,22 @@ router.route('/books/:bookId')
   .put(bookController.updateBooks)
   .delete(bookController.deleteBooks);
 
+
+router.route('/sensors')
+  .get(sensorController.getAllSensors)
+  .post(sensorController.createNewSensor);
+
+router.route('/sensors/:sensorId')
+  .get(sensorController.getSensor)
+  .put(sensorController.updateSensor)
+  .delete(function(req,res){
+
+  });
+
+router.route('/sensors/:sensorId/values')
+  .get(sensorController.getSensorValues)
+  .put(sensorController.appendSensorValues);
+  
 
 // define the about route
 router.get('/about', function(req, res) {
