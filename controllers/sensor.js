@@ -89,6 +89,34 @@ exports.getSensorValues = function(req,res){
 
 }
 
+exports.getSensorLastValue = function(req,res){
+
+   var sensorId = req.params.sensorId;
+
+    Sensor.findById(sensorId, function(err, sensor){
+      if(err)
+        res.json(err);
+
+      var tempEntry = sensor.values[sensor.values.length];
+      res.json(tempEntry);
+    })
+
+}
+
+exports.getSensorLastNValues = function(req,res){
+
+   var sensorId = req.params.sensorId;
+   var count = req.params.count;
+
+    Sensor.findById(sensorId, function(err, sensor){
+      if(err)
+        res.json(err);
+
+      res.json(sensor.values.slice(sensor.values.length - count));
+    })
+
+}
+
 exports.appendSensorValues = function(req,res){  //append
 
     var sensorId = req.params.sensorId;

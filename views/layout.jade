@@ -5,8 +5,12 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
+    title #{title}
     != css('main')
+    
+    link(type="text/css", rel="stylesheet", href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.css")
+    script(src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js")
+
   body
     include partials/header
 

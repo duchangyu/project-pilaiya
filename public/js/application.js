@@ -15,4 +15,5 @@
 
 //= require lib/jquery-2.1.3.min
 //= require lib/bootstrap.min
+//= require bower_components/view-and-data-toolkit/dist/js/viewer.min.js
 //= require main

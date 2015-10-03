@@ -44,6 +44,12 @@ router.route('/sensors/:sensorId')
 router.route('/sensors/:sensorId/values')
   .get(sensorController.getSensorValues)
   .put(sensorController.appendSensorValues);
+
+router.route('/sensors/:sensorId/values/latest')
+  .get(sensorController.getSensorLastValue)
+
+router.route('/sensors/:sensorId/values/:count')
+  .get(sensorController.getSensorLastNValues)
   
 
 // define the about route
